@@ -1,0 +1,13 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3" style="height: 60px;" >
+  <span style="color: white;">Cognizant Academy</span>
+    <div *ngIf="user" class="navbar-nav" style="margin-left: 80%;" >
+      <button class="btn btn-link nav-item nav-link" (click)="logout()">Logout</button>
+
+      </div>
+
+</nav>
+
+<div class="app-container" >  
+  <router-outlet></router-outlet>
+</div>

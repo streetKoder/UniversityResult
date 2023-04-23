@@ -1,0 +1,66 @@
+<div class="banner">
+  <div class="container-fluid search-pane">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header header-label">
+            <label class="btn-align"> View Result </label>
+          </div>
+          <div class="card-body">
+            <div>
+              <label>Registration Number:</label>
+              <input
+                [(ngModel)]="searchReg"
+                class="cls-m-left-10"
+                (keypress)="checkText($event)"
+                type="text"
+                maxlength="10"
+              />
+              <label *ngIf="userError" style="color: red">
+                Registration number not found</label
+              >
+            </div>
+            <div>
+              <button
+                (click)="checkResults(searchReg)"
+                type="button"
+                [disabled]="!searchReg"
+                class="btn btn-primary btn-align"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div *ngIf="resultAvailable" class="row result-pane">
+      <div class="col-2">
+      </div>
+      <div class="col-8">
+        <div>
+          <table class="table" style="background-color: cornflowerblue;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Subject</th>
+                <th scope="col">Mark</th>
+                <th scope="col">Result</th>
+              </tr>
+            </thead>
+            <tbody style="background-color: aliceblue;">
+              <tr *ngFor="let sub of result">
+                <td>{{ sub.subject }}</td>
+                <td>{{ sub.mark }}</td>
+                <td>{{ sub.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-2">        
+      </div>          
+    </div>
+  </div>
+</div>

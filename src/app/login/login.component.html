@@ -1,0 +1,75 @@
+<div class="card">
+  <h4 class="card-header">Login</h4>
+  <div class="card-body">
+    <div class="container-fluid">
+
+      <form [formGroup]="userLogin" (ngSubmit)="onSubmit()">
+        <div style="margin-top: 10px;">
+          <div class="form-group">
+            <label>User Name:</label>
+            <input
+              [class.is-invalid]="userEmail?.invalid && userEmail?.touched"
+              type="email"
+              class="form-control"
+              formControlName="userEmail"
+            />
+
+            <div
+              *ngIf="
+                (userEmail?.invalid && userEmail?.touched) || userEmail?.dirty
+              "
+            >
+              <small *ngIf="userEmail?.errors?.required" class="text-danger"
+                >User name is required</small
+              >
+              <!--question mark(?) is a safe navigation operator-->
+              <small *ngIf="userEmail?.errors?.pattern" class="text-danger"
+                >Please provide user name as valid email address</small
+              >
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <div class="form-group">
+            <label>Password:</label>
+            <input
+              [class.is-invalid]="password?.invalid && password?.touched"
+              type="password"
+              class="form-control"
+              formControlName="password"
+            />
+
+            <div
+              *ngIf="
+                (password?.invalid && password?.touched) || password?.dirty
+              "
+            >
+              <small *ngIf="password?.errors?.required" class="text-danger"
+                >Password is required</small
+              >
+              <!-- <small *ngIf="password?.errors?.pattern" class="text-danger"
+                >Please provide a valid password as Minimum eight characters, at
+                least one letter and one number.</small
+              > -->
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <div class="form-group">
+            <button type="submit" [disabled]="userLogin.invalid" class="btn btn-primary">
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm me-1"
+              ></span>
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
